@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ELEMENTATION | Example</title>
+
+		<script src="elementation.js"></script>
+	</head>
+	<body>
+		<div class="elementation">CLICKER CLASS</div>
+		<div class="elementation">CLICKER CLASS</div>
+		<div class="elementation">CLICKER CLASS</div>
+
+		<script type="text/javascript">
+			ELM.act(
+				'.elementation',
+				'click',
+				// pre clicked function
+				function (props) {
+					// console.log(props.e) // can access event
+					// console.log(props.el) // can access element
+					console.log('i am triggered before action is triggered')
+					return 'Pre response'
+				},
+				// clicked action function
+				function (e, el, props) {
+					// console.log(props.preResponse) // can access pre response returned value
+					console.log('clicked')
+					return 'hi'
+				},
+				// post clicked function
+				function (props) {
+					// console.log(props.actionResponse) // can access action response returned value
+					console.log('i am triggered after action is triggered')
+					return 'post action response'
+				}
+			)
+			// ELM.actionResponse -> has response from post function
+		</script>
+	</body>
+</html>
