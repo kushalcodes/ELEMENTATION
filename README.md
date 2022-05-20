@@ -12,7 +12,7 @@ ELM.act(
 	// event to trigger
 	'click', // event function name just doesnot have 'on' - onclick -> click, onmouseover -> mouseover | hover
 
-	// pre event function
+	// pre event action function
 	function (props) {
 		// console.log(props.e) // can access event
 		// console.log(props.el) // can access element
@@ -27,7 +27,7 @@ ELM.act(
 		return 'hi'
 	},
 
-	// post event function
+	// post event action function
 	function (props) {
 		console.log(props.actionResponse)
 		console.log('i am triggered after event action function is triggered')

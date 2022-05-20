@@ -6,14 +6,16 @@ function _cls(className) {
     return document.getElementsByClassName(className);
 }
 
-function callFn(obj, prop, propProps) {
-    if(obj.hasOwnProperty(prop) && typeof obj[prop] === "function") return obj[prop](propProps);
-}
-
 function ELEMENTATION(elementIdOrClass, actionType, preAction, action, postAction){
 
+    var elementIdOrClassFirstChar = elementIdOrClass.charAt(0);
+    if(elementIdOrClassFirstChar !== '#' && elementIdOrClassFirstChar !== '.') {
+        console.error('Elementation error : ', 'Target element is not valid! -> ', 'use dot for .className and hashTag for #id');
+        return;
+    }
+
     var type = 'class';
-    if(elementIdOrClass.charAt(0) === '#') type = 'id';
+    if(elementIdOrClassFirstChar === '#') type = 'id';
     elementIdOrClass = elementIdOrClass.substring(1)
 
     if(type === 'id') individualAction(actionType, _id(elementIdOrClass), preAction, action, postAction)
@@ -24,7 +26,6 @@ function ELEMENTATION(elementIdOrClass, actionType, preAction, action, postActio
                 individualAction(actionType, elements[i], preAction, action, postAction);
             }
         }
-        
     }
 
 }
